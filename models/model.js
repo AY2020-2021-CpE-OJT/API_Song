@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//Schema
 const dataSchema = new mongoose.Schema({
     name : {
         lname : {
@@ -11,12 +12,12 @@ const dataSchema = new mongoose.Schema({
             type : String,
             required: true
         },
-
-        phone_number:{
-            type: Number,
-            required: true
-        }
+    },
+    
+    phone_number:{
+        type: String,
+        required: true
     }
 });
 
-module.exports = mongoose.model('Phonebook',dataSchema);
+module.exports = mongoose.model('Phonebook', dataSchema);
