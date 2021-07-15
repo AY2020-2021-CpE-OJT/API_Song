@@ -3,11 +3,13 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+//configure connection to MongoDb
 const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open',()=>{console.log("Connected to Mongodb server")});
 
-mongoose.connect("mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+//connect to Mongodb Atlas
+mongoose.connect("mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/task3?retryWrites=true&w=majority");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
