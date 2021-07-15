@@ -6,10 +6,9 @@ const bodyParser = require('body-parser');
 //configure connection to MongoDb
 const db = mongoose.connection;
 db.on('error', console.error);
-db.once('open',()=>{console.log("Connected to Mongodb server")});
 
 //connect to Mongodb Atlas
-mongoose.connect("mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/task3?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/task3?retryWrites=true&w=majority").then(() => {console.log("Connected to Mongodb server")});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
