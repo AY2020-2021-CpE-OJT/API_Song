@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const router = require('./routes')(app) //routes
+const router = require('./routes/index') //routes
 
 require('dotenv').config();
 
@@ -18,6 +18,9 @@ db.on('error', console.error);
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//routes
+app.use('/',router);
 
 const port = process.env.port || 3000;
 

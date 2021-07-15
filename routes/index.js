@@ -14,8 +14,8 @@ router.post('/new', async (req,res)=>{
         phone_number : req.body.Phone_number
     });
 
-    await book.save().then(book => {
-        res.send(book);
+    await contact.save().then(contact => {
+        res.send(contact);
     }).catch(error => {
         res.status(500).send("Fail to add");
     })
