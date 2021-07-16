@@ -30,17 +30,18 @@ router.get('/', async (req,res)=>{
 
 //Get by Last name
 router.get('/getByLname/:lname',async(req,res)=>{
-    res.json(data = await Data.findOne({lname : req.params.lname}));
+    data = await Data.findOne({phone_number: req.params.lname}).then(data => {res.json(data)});
 })
 
 //Get by First name
 router.get('/getByFname/:fname',async(req,res)=>{
-    res.json(data = await Data.findOne({fname: req.params.fname}));
+    data = await Data.findOne({phone_number: req.params.fname}).then(data => {res.json(data)});
+    //res.json(data = await Data.findOne({fname: req.params.fname}));
 })
 
 //Get by Phone Number
 router.get('/getByPhoneNumber/:phoneNumber', async(req,res)=>{
-    res.json(data = await Data.findOne({phone_number: req.params.phone_number}));
+    data = await Data.findOne({phone_number: req.params.phone_number}).then(data => {res.json(data)});
 })
 
 // Delete Data
