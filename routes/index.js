@@ -5,12 +5,9 @@ const Data = require('../models/model');
 //post
 router.post('/new', async (req,res)=>{
 
-    contact = new Data({
-        name : {
-            lname : req.body.lname,
-            fname : req.body.fname
-        },
-
+    const contact = new Data({
+        lname : req.body.lname,
+        fname : req.body.fname,
         phone_number : req.body.phone_number
     });
 
@@ -30,41 +27,112 @@ router.get('/', async (req,res)=>{
 
 //Get by Last name
 router.get('/getByLname/:lname',async(req,res)=>{
-    data = await Data.findOne({phone_number: req.params.lname}).then(data => {res.json(data)});
+    const data = await Data.find({lname:req.params.lname}).then(data => {
+        res.json(data);
+        });
+    //res.json(data = await Data.findOne({lname : req.params.lname}));
 })
 
 //Get by First name
 router.get('/getByFname/:fname',async(req,res)=>{
-    data = await Data.findOne({phone_number: req.params.fname}).then(data => {res.json(data)});
-    //res.json(data = await Data.findOne({fname: req.params.fname}));
+    res.json(data = await Data.find({fname: req.params.fname}));
 })
 
 //Get by Phone Number
 router.get('/getByPhoneNumber/:phoneNumber', async(req,res)=>{
-    data = await Data.findOne({phone_number: req.params.phone_number}).then(data => {res.json(data)});
+    res.json(data = await Data.findOne({phone_number: req.params.phone_number}));
 })
 
 // Delete Data
 router.delete('/delete/:lname', async(req,res)=>{
-    res.json(Delete = await Data.findOneAndDelete({lname: req.params.lname}));
+    res.json(Delete = await Data.findOneAndDelete({lname: req.body.lname}));
 })
 
 // Update Last name
-router.put('/update/:lname', async(req,res)=>{
-    res.json(patch = await Data.findOneAndUpdate({lname: req.params.lname}));
+router.patch('/updateLname/:lname', async(req,res)=>{
+    const patch = await Data.findOneAndUpdate({lname: req.body.lname})
+    res.json(patch);
 })
 
 // Update First name
-router.patch('/update/:fname', async(req,res)=>{
-    res.json(patch = await Data.fineOneAndupdate({fname: req.params.fname}));
+router.patch('/updateFname/:fname', async(req,res)=>{
+    res.json(patch = await Data.fineOneAndupdate({fname: req.body.fname}));
 })
 
 // Update Phone number
-router.patch('/update/:fname', async(req,res)=>{
-    res.json(patch = await Data.fineOneAndupdate({phone_number: req.params.phone_number}));
+router.patch('/updatePhoneNumber/:phone_number', async(req,res)=>{
+    res.json(patch = await Data.fineOneAndupdate({phone_number: req.body.phone_number}));
 })
 
 module.exports = router;
+
+// const express = require('express');
+// const router = express.Router();
+// const Data = require('../models/model');
+
+// //post
+// router.post('/new', async (req,res)=>{
+
+//     contact = new Data({
+//         name : {
+//             lname : req.body.lname,
+//             fname : req.body.fname
+//         },
+
+//         phone_number : req.body.phone_number
+//     });
+
+//     await contact.save().then(contact => {
+//         res.send(contact);
+//     }).catch(error => {
+//         res.status(500).send("Fail to add");
+//     })
+//     res.end();
+
+// })
+
+// // Get all Data
+// router.get('/', async (req,res)=>{
+//     res.json(data = await Data.find());
+// })
+
+// //Get by Last name
+// router.get('/getByLname/:lname',async(req,res)=>{
+//     data = await Data.find({phone_number: req.params.lname}).then(data => {res.json(data)});
+// })
+
+// //Get by First name
+// router.get('/getByFname/:fname',async(req,res)=>{
+//     data = await Data.find({phone_number: req.params.fname}).then(data => {res.json(data)});
+//     //res.json(data = await Data.findOne({fname: req.params.fname}));
+// })
+
+// //Get by Phone Number
+// router.get('/getByPhoneNumber/:phoneNumber', async(req,res)=>{
+//     data = await Data.find({phone_number: req.params.phone_number}).then(data => {res.json(data)});
+// })
+
+// // Delete Data
+// router.delete('/delete/:lname', async(req,res)=>{
+//     res.json(Delete = await Data.findOneAndDelete({lname: req.params.lname}));
+// })
+
+// // Update Last name
+// router.put('/update/:lname', async(req,res)=>{
+//     res.json(patch = await Data.findOneAndUpdate({lname: req.params.lname}));
+// })
+
+// // Update First name
+// router.patch('/update/:fname', async(req,res)=>{
+//     res.json(patch = await Data.fineOneAndupdate({fname: req.params.fname}));
+// })
+
+// // Update Phone number
+// router.patch('/update/:fname', async(req,res)=>{
+//     res.json(patch = await Data.fineOneAndupdate({phone_number: req.params.phone_number}));
+// })
+
+// module.exports = router;
 
 
 // module.exports = (app) => {

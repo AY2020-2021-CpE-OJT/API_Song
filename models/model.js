@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 //Schema
 const dataSchema = new mongoose.Schema({
-    name : {
         lname : {
             type: String,
             required : true
@@ -12,8 +11,6 @@ const dataSchema = new mongoose.Schema({
             type : String,
             required: true
         },
-    },
-    
     phone_number:{
         type: String,
         required: true
