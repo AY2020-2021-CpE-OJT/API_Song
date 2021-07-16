@@ -54,7 +54,7 @@ app.use(express.urlencoded({extended: true}));
 //routes
 app.use('/',router);
 
-const port = process.env.port || 3000;
+const port = process.env.port || 8000;
 
 
 const server = app.listen(port,()=>{
