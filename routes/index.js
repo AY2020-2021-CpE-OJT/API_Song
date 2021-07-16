@@ -21,7 +21,7 @@ router.post('/new', async (req,res)=>{
 })
 
 // Get all Data
-router.get('/get', async (req,res)=>{
+router.get('/', async (req,res)=>{
     res.json(data = await Data.find());
 })
 
