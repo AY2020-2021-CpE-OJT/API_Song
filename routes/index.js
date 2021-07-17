@@ -48,6 +48,14 @@ router.delete('/delete/:lname', async(req,res)=>{
     res.json(Delete = await Data.findOneAndDelete({lname: req.body.lname}));
 })
 
+router.delete('/delete/:fname', async(req,res)=>{
+    res.json(Delete = await Data.findOneAndDelete({lname: req.body.fname}));
+})
+
+router.delete('/delete/:phoneNumber', async(req,res)=>{
+    res.json(Delete = await Data.findOneAndDelete({lname: req.body.lname}));
+})
+
 // Update Last name
 router.patch('/updateLname/:lname', async(req,res)=>{
     const patch = await Data.findOneAndUpdate({lname: req.body.lname})
