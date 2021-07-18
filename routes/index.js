@@ -50,14 +50,15 @@ router.delete('/delete/:_id', async(req,res)=>{
 })
 
 // Update
-router.put('/update/:_id', async(req,res)=>{
-    const put = await Data.findByIdAndUpdate({_id : req.params._id},
+router.patch('/update/:_id', async(req,res)=>{
+    const put = await Data.findByIdAndUpdate(req.params._id,
         {
             lname: req.body.lname,
             fname: req.body.fname,
             phone_number: req.body.phone_number
-        })
-    res.json(patch);
+        }
+        )
+    res.json(put);
 })
 
 module.exports = router;
