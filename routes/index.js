@@ -51,7 +51,7 @@ router.delete('/delete/:_id', async(req,res)=>{
 
 // Update
 router.put('/update/:_id', async(req,res)=>{
-    const patch = await Data.findByIdAndUpdate(req.params._id,
+    const put = await Data.findByIdAndUpdate({_id : req.params._id},
         {
             lname: req.body.lname,
             fname: req.body.fname,
