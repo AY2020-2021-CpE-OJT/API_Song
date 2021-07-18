@@ -53,7 +53,7 @@ router.delete('/delete/:fname', async(req,res)=>{
 })
 
 router.delete('/delete/:phoneNumber', async(req,res)=>{
-    res.json(Delete = await Data.findOneAndDelete({lname: req.body.lname}));
+    res.json(Delete = await Data.findOneAndDelete({lname: req.body.phone_number}));
 })
 
 // Update Last name
