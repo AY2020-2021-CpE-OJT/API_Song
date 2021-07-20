@@ -3,6 +3,7 @@ const {Strategy: LocalStrategy} = require('passport-local');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
+
 const passportConfig = {usernameField: 'userID', password:'password'};
 const passportVerfiy = async (userId,password,done) => {
     try {
