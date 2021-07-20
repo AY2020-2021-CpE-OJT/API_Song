@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 
+
 const passportConfig = {usernameField: 'userID', password:'password'};
 const passportVerfiy = async (userId,password,done) => {
     try {
@@ -11,9 +12,9 @@ const passportVerfiy = async (userId,password,done) => {
         const user = await User.findOne({name: userID});
 
         //만일 검색된 유저 데이터가 없다면
-        if (!user){
-            done(null,false,{reason : 'User not exist'});
-            return;
+        if (!user) {
+          done(null, false, { reason: "User not exist" });
+          return;
         }
 
         //검색된 유저가 있으면 유저 해쉬된 비밀번호 비교
