@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const router = require('./routes/index') //routes
-const passportRouter = require('./routes/user')
+const passportRouter = require('./routes/passport_routes')
 const passport = require('passport');
-const passportConfig = require('./passport');
+const passportConfig = require('./passport/passport');
 
 require('dotenv').config();
 
@@ -20,14 +20,15 @@ const db = mongoose.connection;
 db.on('error', console.error);
 
 //middlewares
+app.use('/auth',passportRouter);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(passport.initialize());
-passportConfig();
+//passportConfig();
 
 //routes
-app.use('/',router);
-app.use('/',passportRouter);
+app.use('/', passport.authenticate('jwt',{session: false}), router);
+
 
 const port = process.env.PORT || 3000;
 

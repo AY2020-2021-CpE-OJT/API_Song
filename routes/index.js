@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Data = require('../models/model');
+require('../passport/passport')
+
+const passport = require('passport');
 
 //post
 router.post('/new', async (req,res)=>{
