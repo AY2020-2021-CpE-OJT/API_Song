@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Data = require('../models/model');
+require('dotenv').config;
+const jwt = require('jsonwebtoken');
+require('./passport');
+
+router.use(express.json());
 
 //post
 router.post('/new', async (req,res)=>{
