@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const router = require('./routes/routes') //routes
+const passport = require('passport')
+const passportConfig = require('./passport/passport')
+const pass = require('./routes/auth')
 
 require('dotenv').config();
 
@@ -21,8 +24,13 @@ db.on('error', console.error);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+//passport
+app.use(passport.initialize());
+passportConfig();
+
 //routes
 app.use('/',router);
+app.use('/auth', pass);
 
 const port = process.env.PORT || 3000;
 
