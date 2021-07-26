@@ -48,7 +48,7 @@ passport.use('login', new LocalStrategy({
         try {
             users.findOne({name}, (err,result) => {
                 if (err) throw error(err);
-                !result ? done(null, {message: "User doesn't Exist!"}) : users.findOne({name} , (err,res) => {
+                !result ? done(null, {message: "User doesn't Exist!"}) : users.findOne({password} , (err,res) => {
                     if (err) throw err;
                     !res ? done(null,{message: "You entered wrong password"}) : done(null,{message: "Login successfully!"});
                 })

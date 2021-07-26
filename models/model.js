@@ -12,7 +12,7 @@ const dataSchema = new mongoose.Schema({
             required: true
         },
     phone_number:{
-        type: String,
+        type: Array,
         required: true
     }
 });
